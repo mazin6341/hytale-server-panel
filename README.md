@@ -15,7 +15,7 @@ Ensure you have the following installed on your local machine:
 1.  **Clone the repository**
 
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/mazin6341/hytale-server-panel.git
     cd hytale-server-panel
     ```
 
