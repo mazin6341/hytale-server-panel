@@ -27,7 +27,7 @@
                 <a href="#" class="px-6 py-3 text-sm font-semibold text-white transition-all bg-indigo-600 rounded-lg shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Learn More
                 </a>
-                <a href="https://github.com" class="text-sm font-semibold leading-6 text-slate-900 hover:text-indigo-600 transition-colors">
+                <a href="https://github.com/mazin6341/hytale-server-panel" class="text-sm font-semibold leading-6 text-slate-900 hover:text-indigo-600 transition-colors">
                     View on GitHub <span aria-hidden="true">→</span>
                 </a>
             </div>
