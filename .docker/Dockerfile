@@ -51,7 +51,7 @@ RUN groupmod -g ${DOCKER_GID} www-data
 
 RUN mkdir -p /var/www/.npm
 
-# # Copy existing application directory permissions
+# Copy existing application directory permissions
 RUN chown -R www-data:www-data /var/www
 
 # Change current user to www

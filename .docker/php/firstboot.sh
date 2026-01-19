@@ -66,6 +66,10 @@ php artisan tinker <<EOF
 echo "User $USER_NAME created successfully.\n";
 EOF
 
+# Creating Super Admin Role and Assigning to The New User
+echo "Creating 'Super Admin' Role and assigning to $USER_EMAIL..."
+php artisan db:seed
+
 # Build assets if package.json exists
 if [ -f "package.json" ]; then
     echo "Building frontend assets..."

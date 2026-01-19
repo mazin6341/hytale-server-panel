@@ -1,14 +1,14 @@
 CONTAINER ?= hytale-web-panel
 container = $(CONTAINER)
 
+exec:
+	docker-compose exec $(container) /bin/sh
+
 first-boot:
 	@echo Setting up project image and installing composer packages
 	touch .docker/.env
 	docker-compose build
 	docker-compose run --rm --entrypoint "/bin/sh /firstboot.sh" -v $(shell realpath ./.docker/php/firstboot.sh):/firstboot.sh $(container)
-
-exec:
-	docker-compose exec $(container) bash
 
 build:
 	@echo Building all containers

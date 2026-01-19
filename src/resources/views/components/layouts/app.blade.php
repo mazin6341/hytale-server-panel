@@ -4,14 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
+        <title>{{ $title ?? config('app.name', 'Hytale Web Panel') }}</title>
 
-        @wireUiScripts
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @wireUiScripts
         @livewireStyles
     </head>
-    <body class="font-sans antialiased dark:bg-gradient-to-bl dark:from-gray-950 dark:to-gray-900 dark:text-gray-100 bg-gradient-to-bl from-gray-50 to-gray-100 text-gray-900">
+    <body class="font-sans antialiased dark:bg-linear-to-bl dark:from-gray-950 dark:to-gray-900 dark:text-gray-100 bg-linear-to-bl from-gray-50 to-gray-100 text-gray-900">
         {{ $slot }}
+
+        @livewire('wire-elements-modal')
         @livewireScripts
     </body>
 </html>
