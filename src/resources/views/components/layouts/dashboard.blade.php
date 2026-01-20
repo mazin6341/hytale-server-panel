@@ -6,6 +6,10 @@
 
         <title>{{ $title ?? config('app.name', 'Hytale Web Panel') }}</title>
 
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="csrf_token" value="{{ csrf_token() }}"/>
+
+        <x-notifications />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @wireUiScripts
         @livewireStyles
@@ -40,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="hidden md:flex md:flex-shrink-0">
+            <div class="hidden md:flex md:shrink-0">
                 <x-layouts.sidebar />
             </div>
 

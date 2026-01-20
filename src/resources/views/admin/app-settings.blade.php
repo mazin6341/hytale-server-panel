@@ -1,5 +1,3 @@
-<x-layouts.dashboard title="App Settings - Hytale Web Panel">
-    <div class="w-full flex gap-4 p-2">
-        <h3 class="text-xl flex-1">App Settings</h3>
-    </div>
+<x-layouts.dashboard class="flex flex-col gap-4" title="App Settings - Hytale Web Panel">
+    <livewire:admin.app-settings.web-map />
 </x-layouts.dashboard>

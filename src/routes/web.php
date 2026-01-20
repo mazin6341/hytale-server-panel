@@ -1,11 +1,19 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Models\AppSetting;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $mapSetting = AppSetting::where('section', 'Web Map')->where('name', 'Enable Map')->first();
+    if($mapSetting && $mapSetting->getValue() == true){
+        $url = AppSetting::where('section', 'Web Map')->where('name', 'URL')->first()->getValue();
+        $port = AppSetting::where('section', 'Web Map')->where('name', 'Port')->first()->getValue();
+        $fullUrl = "{$url}:{$port}";
+        return view('map', ['url' => $fullUrl]);
+    } else
+        return view('welcome');
 });
 
 #region Dashboard Routes

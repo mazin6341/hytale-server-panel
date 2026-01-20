@@ -25,7 +25,7 @@
                         type="email"
                         required 
                         autofocus 
-                        class="!rounded-xl"
+                        class="rounded-xl!"
                     />
 
                     <div>
@@ -35,7 +35,7 @@
                             placeholder="••••••••" 
                             name="password"
                             required 
-                            class="!rounded-xl"
+                            class="rounded-xl!"
                         />
                         <div class="flex items-center justify-end mt-2">
                             @if (Route::has('password.request'))
@@ -61,7 +61,7 @@
                             primary 
                             lg
                             label="Sign In" 
-                            class="w-full !rounded-xl shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
+                            class="w-full rounded-xl! shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
                         />
                     </div>
                 </form>
