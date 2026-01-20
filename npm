@@ -1,4 +1,4 @@
 #!/bin/sh
 
 CONTAINER="${CONTAINER:-hytale-web-panel}"
-docker compose exec $CONTAINER npm $@
+docker compose exec -u www-data $CONTAINER npm $@

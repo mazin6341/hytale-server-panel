@@ -1,4 +1,4 @@
 #!/bin/sh
 
 CONTAINER="${CONTAINER:-hytale-web-panel}"
-docker compose exec $CONTAINER php $@
+docker compose exec -u www-data $CONTAINER php $@
