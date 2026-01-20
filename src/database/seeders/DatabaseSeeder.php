@@ -22,14 +22,6 @@ class DatabaseSeeder extends Seeder
         User::find(1)->assignRole($sAdmin);
 
         #region Application Settings
-        // Curseforge
-        // AppSetting::create([
-        //     'name'          => 'Curseforge API Key',
-        //     'section'       => 'Curseforge',
-        //     'value'         => null,
-        //     'is_encrypted'  => true,
-        // ]);
-
         // Web Map
         AppSetting::create([
             'name'          => 'Enable Map',
@@ -40,12 +32,14 @@ class DatabaseSeeder extends Seeder
 
         AppSetting::create([
             'name'          => 'URL',
+            'detail'        => "Avoid using localhost. If you want to host the map locally, use the host's IP address or serve the map through a proxy, and use the link here.",
             'section'       => 'Web Map',
-            'value'         => 'http://localhost',
+            'value'         => '',
         ]);
 
         AppSetting::create([
             'name'          => 'Port',
+            'detail'        => '',
             'section'       => 'Web Map',
             'value'         => '8080',
         ]);

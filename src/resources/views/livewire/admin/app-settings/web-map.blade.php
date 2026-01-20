@@ -26,6 +26,9 @@
                             <span class="text-sm font-semibold text-gray-700 dark:text-gray-200">
                                 {{ $setting['name'] }}
                             </span>
+                            @if($setting['detail'] != null)
+                                <p class="text-2xs dark:text-gray-400">{{ $setting['detail'] }}</p>
+                            @endif
                             @if($setting['is_encrypted'])
                                 <div class="flex items-center gap-1.5 mt-1">
                                     <x-icon name="lock-closed" class="w-3.5 h-3.5 text-blue-500" />

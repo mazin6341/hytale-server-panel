@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('app_settings', function (Blueprint $table) {
             $table->id();
             $table->text('name');
+            $table->text('detail')->nullable();
             $table->text('section');
             $table->text('value')->nullable();
             $table->boolean('is_boolean')->default(false);
