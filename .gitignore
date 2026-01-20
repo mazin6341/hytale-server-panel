@@ -26,6 +26,7 @@ src/package-lock.json
 # Docker specific
 .docker/.env
 .docker/database
+docker-compose.yml
 
 # Ignore Hytale Server Files
 /data

@@ -31,7 +31,8 @@ services:
     restart: unless-stopped
     ports:
       - "5520:5520/udp"
-      - "8080"
+      # Added for Web Map, Comment the line below if you don't intend on using a Web Map
+      - "8080:8080"
     volumes:
       - ./data:/home/container
       - /etc/machine-id:/etc/machine-id:ro
