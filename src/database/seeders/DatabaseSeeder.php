@@ -22,6 +22,13 @@ class DatabaseSeeder extends Seeder
         User::find(1)->assignRole($sAdmin);
 
         #region Application Settings
+        // Container Settings
+        AppSetting::create([
+            'name'          => 'Container Name',
+            'section'       => 'Docker Settings',
+            'value'         => 'hytale-server',
+        ]);
+
         // Web Map
         AppSetting::create([
             'name'          => 'Enable Map',
