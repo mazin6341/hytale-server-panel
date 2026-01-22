@@ -8,13 +8,20 @@
                 Manage your Web Map settings.
             </p>
         </div>
-        <x-button 
-            primary 
-            label="Save Changes" 
-            wire:click="save" 
-            spinner="save" 
-            class="w-full sm:w-auto"
-        />
+
+        @can('modify web map settings')
+            <x-button 
+                primary 
+                label="Save Changes" 
+                wire:click="save" 
+                spinner="save" 
+                class="w-full sm:w-auto"
+            />
+        @else
+            <span class="text-xs font-medium text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+                View Only
+            </span>
+        @endcan
     </div>
 
     <x-card shadow="none" class="border border-gray-200 dark:border-secondary-700 bg-white dark:bg-secondary-800">
@@ -29,14 +36,6 @@
                             @if($setting['detail'] != null)
                                 <p class="text-2xs dark:text-gray-400">{{ $setting['detail'] }}</p>
                             @endif
-                            @if($setting['is_encrypted'])
-                                <div class="flex items-center gap-1.5 mt-1">
-                                    <x-icon name="lock-closed" class="w-3.5 h-3.5 text-blue-500" />
-                                    <span class="text-xs font-medium text-blue-600 dark:text-blue-400">
-                                        Encrypted
-                                    </span>
-                                </div>
-                            @endif
                         </div>
 
                         <div class="flex sm:justify-end">
@@ -44,6 +43,7 @@
                                 <x-toggle 
                                     wire:model="settings.{{$i}}.value" 
                                     lg 
+                                    :disabled="!\Auth::user()->can('modify web map settings')"
                                 />
                             @else
                                 <div class="w-full sm:max-w-xs">
@@ -52,6 +52,7 @@
                                         placeholder="Value for {{ $setting['name'] }}"
                                         type="{{ $setting['is_encrypted'] ? 'password' : 'text' }}"
                                         class="dark:bg-secondary-900 dark:border-secondary-600 dark:text-gray-300"
+                                        :disabled="!\Auth::user()->can('modify web map settings')"
                                     />
                                 </div>
                             @endif
