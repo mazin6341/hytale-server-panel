@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,15 @@ class DatabaseSeeder extends Seeder
     {
         $sAdmin = Role::create(['name' => 'Super Admin']);
         User::find(1)->assignRole($sAdmin);
+
+        #region Create all permissions
+        Permission::create(['name' => 'manage users']);
+        Permission::create(['name' => 'manage permissions']);
+        Permission::create(['name' => 'modify web map settings']);
+        Permission::create(['name' => 'manage docker container']);
+        Permission::create(['name' => 'view docker stats']);
+        Permission::create(['name' => 'view docker logs']);
+        #endregion
 
         #region Application Settings
         // Container Settings

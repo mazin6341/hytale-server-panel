@@ -19,23 +19,41 @@
                     </td>
                     <td class="px-6 py-4 text-right whitespace-nowrap">
                         <div class="flex justify-end gap-x-2">
-                            <x-button 
-                                sm
-                                flat
-                                blue
-                                icon="pencil"
-                                label="Edit"
-                                onclick="Livewire.dispatch('openModal', { component: 'admin.users.user-modal', arguments: { id: {{ $user->id }} }})"
-                            />
-                            <x-button 
-                                sm
-                                flat
-                                negative
-                                icon="trash"
-                                wire:click="deleteUser({{$user->id}})"
-                                wire:confirm="Are you sure you want to delete this user?"
-                                :disabled="Auth::user()->id == $user->id"
-                            />
+                            @if(!$user->hasRole('Super Admin'))
+                                @can('manage permissions')
+                                    <x-button 
+                                        sm
+                                        flat
+                                        warning
+                                        icon="lock-closed"
+                                        label="Permissions"
+                                        onclick="Livewire.dispatch('openModal', { component: 'admin.users.permissions-modal', arguments: { id: {{ $user->id }} }})"
+                                    />
+                                @endcan
+                            @endif
+                            @if($user->id == Auth::user()->id || Auth::user()->can('manage users'))
+                                <x-button 
+                                    sm
+                                    flat
+                                    blue
+                                    icon="pencil"
+                                    label="Edit"
+                                    onclick="Livewire.dispatch('openModal', { component: 'admin.users.user-modal', arguments: { id: {{ $user->id }} }})"
+                                />
+                            @endif
+                            @if(!$user->hasRole('Super Admin'))
+                                @can('manage users')
+                                    <x-button 
+                                        sm
+                                        flat
+                                        negative
+                                        icon="trash"
+                                        wire:click="deleteUser({{$user->id}})"
+                                        wire:confirm="Are you sure you want to delete this user?"
+                                        :disabled="Auth::user()->id == $user->id"
+                                    />
+                                @endcan
+                            @endif
                         </div>
                     </td>
                 </tr>
