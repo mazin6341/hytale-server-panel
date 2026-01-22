@@ -11,6 +11,7 @@ services:
       - ./.docker/php/entrypoint.sh:/docker-entrypoint.sh:z
       - ./.docker/database:/var/www/database
       - ./.docker:/var/www/.docker
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "8000:8000"
     environment:
