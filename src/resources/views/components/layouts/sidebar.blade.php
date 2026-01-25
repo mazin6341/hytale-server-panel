@@ -226,7 +226,7 @@
                 </div>
             </div>
 
-            <!-- moking55's Card -->
+            <!-- joeyaurel's Card -->
             <div class="group relative flex flex-col bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden h-full">
                 <div class="h-28 bg-gradient-to-br from-[#9146FF] to-[#6441a5] relative">
                     <div class="absolute inset-0 opacity-10" 
@@ -249,7 +249,7 @@
                     </span>
 
                     <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                        -
+                        Developer, DevOps engineer & CKAD.
                     </p>
 
                     <div class="mt-5 flex items-center justify-center gap-4">
