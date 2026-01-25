@@ -16,6 +16,10 @@ Route::get('/', function () {
         return view('welcome');
 });
 
+Route::get('/faq', function() {
+    return view('faq');
+});
+
 #region Dashboard Routes
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard', function() {
