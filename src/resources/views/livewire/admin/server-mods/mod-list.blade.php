@@ -3,6 +3,9 @@
         <div>
             <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Server Mods</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">Manage and deploy modifications to your game directory.</p>
+            <p class="mt-1 text-xs text-secondary-500 dark:text-secondary-400">
+                <span class="font-mono text-primary-600 dark:text-primary-400">NOTE:</span> Make sure to restart the game server to apply your mods!
+            </p>
         </div>
     </div>
 
@@ -32,7 +35,7 @@
                                 dark:hover:file:bg-secondary-600 transition-all"
                         />
                         
-                        <p class="mt-1 text-xs text-secondary-500 dark:text-secondary-400">
+                        <p class="mt-2 text-xs text-secondary-500 dark:text-secondary-400">
                             Supported formats: <span class="font-mono text-primary-600 dark:text-primary-400">.jar, .zip</span>
                         </p>
                     </div>
