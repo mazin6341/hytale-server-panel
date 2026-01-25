@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\ServerMods;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -16,10 +17,17 @@ class ModList extends Component
     public $mods = [];
 
     public function mount() {
-        $this->loadMods();
+        if (Auth::user()->can('view server mods')) {
+            $this->loadMods();
+        }
     }
 
     public function loadMods() {
+        if (!Auth::user()->can('view server mods')) {
+            $this->mods = [];
+            return;
+        }
+
         $path = $this->getModsPath();
 
         if (!File::exists($path)) return;
@@ -44,6 +52,11 @@ class ModList extends Component
     }
 
     public function uploadMod() {
+        if (!Auth::user()->can('manage server mods')) {
+            $this->notification()->error('Permission Denied', 'You do not have permission to upload mods.');
+            return;
+        }
+
         $this->validate([
             'modFiles.*' => 'required|file|max:102400|mimes:zip,jar',
         ]);
@@ -102,6 +115,11 @@ class ModList extends Component
     }
 
     public function deleteFile($fileName) {
+        if (!Auth::user()->can('manage server mods')) {
+            $this->notification()->error('Permission Denied', 'You do not have permission to delete mods.');
+            return;
+        }
+
         $path = $this->getModsPath() . '/' . basename($fileName);
 
         if (File::exists($path)) {

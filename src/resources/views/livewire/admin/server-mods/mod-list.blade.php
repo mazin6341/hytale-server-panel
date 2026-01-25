@@ -9,6 +9,7 @@
         </div>
     </div>
 
+    @can('manage server mods')
     <x-card title="Upload Mods" icon="cloud-arrow-up">
         <div class="flex flex-col gap-4">
             <div class="flex flex-col sm:flex-row gap-4 items-start">
@@ -77,7 +78,9 @@
             </div>
         </div>
     </x-card>
+    @endcan
 
+    @can('view server mods')
     <div class="space-y-3">
         <div class="flex items-center justify-between px-1">
             <div class="flex items-center gap-2">
@@ -150,15 +153,17 @@
                             </div>
 
                             <div class="col-span-5 sm:col-span-2 text-right">
+                                @can('manage server mods')
                                 <x-button 
                                     negative 
                                     x-bind:size="compact ? 'xs' : 'sm'"
                                     icon="trash" 
                                     variant="flat"
-                                    wire:click="delete(@js($mod['filename']))"
+                                    wire:click="deleteFile(@js($mod['filename']))"
                                     wire:confirm="Are you sure you want to delete {{ $mod['filename'] }}?"
                                     class="sm:opacity-0 group-hover:opacity-100 transition-opacity"
                                 />
+                                @endcan
                             </div>
                         </div>
                     </li>
@@ -171,4 +176,15 @@
             </ul>
         </div>
     </div>
+    @else
+    <div class="w-full flex flex-col items-center justify-center p-12 bg-white dark:bg-secondary-900 rounded-xl shadow-sm border border-gray-200 dark:border-secondary-700">
+        <div class="bg-gray-100 dark:bg-secondary-800 p-4 rounded-full mb-4">
+            <x-icon name="lock-closed" class="w-8 h-8 text-gray-400 dark:text-gray-500" />
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Access Denied</h3>
+        <p class="text-gray-500 dark:text-gray-400 text-center mt-1 max-w-sm">
+            You do not have permission to view the server mods configuration.
+        </p>
+    </div>
+    @endcan
 </div>

@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'manage docker container']);
         Permission::create(['name' => 'view docker stats']);
         Permission::create(['name' => 'view docker logs']);
+        Permission::create(['name' => 'view server mods']);
+        Permission::create(['name' => 'manage server mods']);
         #endregion
 
         #region Application Settings
