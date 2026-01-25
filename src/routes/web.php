@@ -22,19 +22,15 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::prefix('users')->name('users.')->group(function() {
-        Route::get('/', function() {
-            return view('admin.users.index');
-        })->name('index');
+    Route::get('/server-mods', function() {
+        return view('admin.server-mods');
+    })->name('server-mods');
 
-        Route::get('/create', function() {
-            return view('admin.users.user-form', ['id' => null]);
-        })->name('create');
-        
-        Route::get('/edit/{id}', function($id) {
-            return view('admin.users.user-form', ['id' => $id]);
-        })->name('edit');
-    });
+    #region User Routes
+    Route::get('/users', function() {
+        return view('admin.users.index');
+    })->name('users');
+    #endregion
 
     Route::get('/app-settings', function() {
         return view('admin.app-settings');
