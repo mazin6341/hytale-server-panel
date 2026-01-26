@@ -69,7 +69,7 @@
             @enderror
             
             @error('modFiles')
-                <x-badge flat negative label="{{ $message }}" icon="exclamation" class="w-fit" />
+                <x-badge flat negative label="{{ $message }}" icon="exclamation-circle" class="w-fit" />
             @enderror
 
             <div wire:loading wire:target="modFiles" class="flex items-center gap-2 text-sm text-primary-600 dark:text-primary-400 animate-pulse">
