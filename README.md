@@ -19,14 +19,22 @@ Ensure you have the following installed on your local machine:
     cd hytale-server-panel
     ```
 
+2.  **Copy the docker-compose.yml File**
+
+    ```bash
+    cp docker-compose.example.yml docker-compose.yml
+    ```
+
 ### With Makefile
-2. **Automatic Docker & Application Setup**
+3. **Automatic Docker & Application Setup**
 
     ```bash
     make first-boot
     ```
 
-3. **Start Application**
+NOTE: This step requires user input for user creation!
+
+4. **Start Application**
 
     ```bash
     make start
@@ -34,7 +42,7 @@ Ensure you have the following installed on your local machine:
 
 ### Without Makefile
 
-2. **Manual Docker & Application Setup**
+3. **Manual Docker & Application Setup**
 
     ```bash
     touch .docker/.env
@@ -42,7 +50,9 @@ Ensure you have the following installed on your local machine:
     docker-compose run --rm --entrypoint "/bin/sh /firstboot.sh" -v $(pwd)/.docker/php/firstboot.sh:/firstboot.sh hytale-web-panel
     ```
 
-3. **Start Application**
+NOTE: This step requires user input for user creation!
+
+4. **Start Application**
 
     ```bash
     docker-compose up -d
