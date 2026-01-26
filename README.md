@@ -39,19 +39,19 @@ Ensure you have the following installed on your local machine:
             container_name: hytale-web-panel
             restart: unless-stopped
             build:
-            context: .
-            dockerfile: .docker/Dockerfile
+                context: .
+                dockerfile: .docker/Dockerfile
             volumes:
-            - ./src:/var/www/html
-            - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini:ro
-            - ./.docker/php/entrypoint.sh:/docker-entrypoint.sh:z
-            - ./.docker/database:/var/www/database
-            - ./.docker:/var/www/.docker
-            - /var/run/docker.sock:/var/run/docker.sock
-            # Game Server Folder
-            - ./data:/var/www/html/data
+                - ./src:/var/www/html
+                - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini:ro
+                - ./.docker/php/entrypoint.sh:/docker-entrypoint.sh:z
+                - ./.docker/database:/var/www/database
+                - ./.docker:/var/www/.docker
+                - /var/run/docker.sock:/var/run/docker.sock
+                # Game Server Folder
+                - ./data:/var/www/html/data
             ports:
-            - "8000:8000"
+                - "8000:8000"
             entrypoint: /bin/sh /docker-entrypoint.sh
     ```
 
