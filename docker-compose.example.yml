@@ -12,12 +12,10 @@ services:
       - ./.docker/database:/var/www/database
       - ./.docker:/var/www/.docker
       - /var/run/docker.sock:/var/run/docker.sock
+      # Game Server Folder
+      - ./data:/var/www/html/data
     ports:
       - "8000:8000"
-    environment:
-      APP_NAME: "Hytale Web Panel"
-      DB_CONNECTION: sqlite
-      DB_DATABASE: /var/www/database/database.sqlite
     entrypoint: /bin/sh /docker-entrypoint.sh
 
   hytale:
