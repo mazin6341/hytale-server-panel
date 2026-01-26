@@ -19,7 +19,7 @@ Ensure you have the following installed on your local machine:
     cd hytale-server-panel
     ```
 
-Or if you already have a hytale docker container setup
+    Or if you already have a hytale docker container setup
 
     ```bash
     cd <your-hytale-docker-directory>
@@ -32,7 +32,7 @@ Or if you already have a hytale docker container setup
     cp docker-compose.example.yml docker-compose.yml
     ```
 
-Or if you already have a hytale docker container setup, add the following service to your docker-compose.yml file.
+    Or if you already have a hytale docker container setup, add the following service to your docker-compose.yml file.
 
     ```yaml
         hytale-web-panel:
