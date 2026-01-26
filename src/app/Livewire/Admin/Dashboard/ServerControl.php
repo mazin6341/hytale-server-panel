@@ -60,11 +60,21 @@ class ServerControl extends Component
         $this->dispatch('notify', ['message' => 'Update started. Check console for progress.', 'type' => 'info']);
     }
 
-    public function updateAndRestart() {
-        // $docker = new DockerService();
-        // $this->runUpdate();
-        // $this->dispatch('notify', ['message' => 'Update initiated. Server will restart shortly.', 'type' => 'warning']);
+    public function exportLogs() {
+        if (!auth()->user()->can('view docker logs')) {
+            $this->notification()->error('Insufficient permissions.');
+            return;
+        }
 
+        $rawLogs = $this->docker->getAllLogs();
+        $parsedLogs = $this->docker->parseLogStream($rawLogs);
+        $cleanLogs = preg_replace('/\x1B\[[0-9;]*[mK]/', '', $parsedLogs);
+
+        $filename = $this->containerName . '-logs-' . now()->format('Y-m-d_H-i-s') . '.txt';
+
+        return response()->streamDownload(function () use ($cleanLogs) {
+            echo $cleanLogs;
+        }, $filename);
     }
     #endregion
     

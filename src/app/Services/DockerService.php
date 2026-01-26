@@ -108,4 +108,38 @@ class DockerService
             return "\x1b[1;33m[PROCESS STARTED] The command is taking a long time. It has been moved to the background. Please check the logs in a few moments for results.\x1b[0m";
         }
     }
+
+    public function getAllLogs() {
+        if(Auth::user() && !Auth::user()->can('view docker logs')) return null;
+
+        $response = $this->client()->get("{$this->baseUrl}/containers/{$this->containerName}/logs", [
+            'stdout' => true,
+            'stderr' => true,
+            'tail'   => 'all',
+        ]);
+
+        return $response->successful() ? $response->body() : null;
+    }
+
+    public function parseLogStream($rawLogs) {
+        if (!$rawLogs) return '';
+
+        if (strlen($rawLogs) < 8 || substr($rawLogs, 1, 3) !== "\x00\x00\x00") {
+            return $rawLogs;
+        }
+
+        $output = '';
+        $position = 0;
+        $len = strlen($rawLogs);
+
+        while ($position < $len) {
+            if (($position + 8) > $len) break;
+            $header = substr($rawLogs, $position, 8);
+            $payloadSize = unpack('N', substr($header, 4, 4))[1];
+            $output .= substr($rawLogs, $position + 8, $payloadSize);
+            $position += (8 + $payloadSize);
+        }
+
+        return $output ?: $rawLogs;
+    }
 }

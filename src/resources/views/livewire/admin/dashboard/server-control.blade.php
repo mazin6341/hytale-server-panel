@@ -93,6 +93,17 @@
                         class="w-full text-xs font-bold"
                         :disabled="!\Auth::user()->can('manage docker container')"
                     />
+                    @can('view docker logs')
+                        <x-button 
+                            secondary 
+                            outline
+                            label="Export Server Logs" 
+                            icon="document-arrow-down" 
+                            wire:click="exportLogs"
+                            spinner="exportLogs"
+                            class="w-full text-xs font-bold"
+                        />
+                    @endcan
                 </div>
                 
                 <p class="text-2xs text-slate-400 dark:text-gray-600 font-mono mt-3 leading-tight">
