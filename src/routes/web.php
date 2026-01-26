@@ -13,7 +13,7 @@ Route::get('/', function () {
         $fullUrl = "{$url}:{$port}";
         return view('map', ['url' => $fullUrl]);
     } else
-        return view('welcome');
+        return redirect(route('login'));
 });
 
 Route::get('/faq', function() {

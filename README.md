@@ -19,10 +19,40 @@ Ensure you have the following installed on your local machine:
     cd hytale-server-panel
     ```
 
+Or if you already have a hytale docker container setup
+
+    ```bash
+    cd <your-hytale-docker-directory>
+    git clone https://github.com/mazin6341/hytale-server-panel.git .
+    ```
+
 2.  **Copy the docker-compose.yml File**
 
     ```bash
     cp docker-compose.example.yml docker-compose.yml
+    ```
+
+Or if you already have a hytale docker container setup, add the following service to your docker-compose.yml file.
+
+    ```yaml
+        hytale-web-panel:
+            container_name: hytale-web-panel
+            restart: unless-stopped
+            build:
+            context: .
+            dockerfile: .docker/Dockerfile
+            volumes:
+            - ./src:/var/www/html
+            - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini:ro
+            - ./.docker/php/entrypoint.sh:/docker-entrypoint.sh:z
+            - ./.docker/database:/var/www/database
+            - ./.docker:/var/www/.docker
+            - /var/run/docker.sock:/var/run/docker.sock
+            # Game Server Folder
+            - ./data:/var/www/html/data
+            ports:
+            - "8000:8000"
+            entrypoint: /bin/sh /docker-entrypoint.sh
     ```
 
 ### With Makefile
