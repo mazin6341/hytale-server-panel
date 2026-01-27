@@ -19,7 +19,7 @@ services:
     entrypoint: /bin/sh /docker-entrypoint.sh
 
   hytale:
-    image: deinfreu/hytale-server:experimental-alpine-liberica
+    image: deinfreu/hytale-server:latest-alpine-liberica
     container_name: hytale-server
     environment:
       SERVER_IP: "0.0.0.0"
