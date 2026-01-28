@@ -17,6 +17,9 @@ services:
     ports:
       - "8000:8000"
     entrypoint: /bin/sh /docker-entrypoint.sh
+    environment:
+      DB_CONNECTION: sqlite
+      DB_DATABASE: /var/www/database/database.sqlite
 
   hytale:
     image: deinfreu/hytale-server:latest-alpine-liberica
