@@ -45,29 +45,8 @@ php artisan key:generate
 echo "Running migrations..."
 php artisan migrate:fresh
 
-# Create Admin User
-# echo "------------------------------------------"
-# echo "   Setup Administrative User Account"
-# echo "------------------------------------------"
-# read -p "Enter Full Name: " USER_NAME
-# read -p "Enter Email Address: " USER_EMAIL
-# read -sp "Enter Password: " USER_PASS
-# echo ""
-# echo "Creating account for $USER_EMAIL..."
-
-# php artisan tinker <<EOF
-# \$user = \App\Models\User::updateOrCreate(
-#     ['email' => '$USER_EMAIL'],
-#     [
-#         'name' => '$USER_NAME',
-#         'password' => \Illuminate\Support\Facades\Hash::make('$USER_PASS'),
-#     ]
-# );
-# echo "User $USER_NAME created successfully.\n";
-# EOF
-
 # Creating Super Admin Role and Assigning to The New User
-echo "Creating 'Super Admin' Role and assigning to $USER_EMAIL..."
+echo "Seeding Database..."
 php artisan db:seed
 
 # Build assets if package.json exists
