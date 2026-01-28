@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
         $firstUser = User::find(1);
         if ($firstUser)
-            User::find(1)->assignRole($sAdmin);
+            $firstUser->assignRole($sAdmin);
 
         #region Create all permissions
         Permission::firstOrCreate(['name' => 'manage users']);
