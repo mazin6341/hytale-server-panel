@@ -62,8 +62,6 @@ Ensure you have the following installed on your local machine:
     make first-boot
     ```
 
-NOTE: This step requires user input for user creation!
-
 4. **Start Application**
 
     ```bash
@@ -79,8 +77,6 @@ NOTE: This step requires user input for user creation!
     docker-compose build
     docker-compose run --rm --entrypoint "/bin/sh /firstboot.sh" -v $(pwd)/.docker/php/firstboot.sh:/firstboot.sh hytale-web-panel
     ```
-
-NOTE: This step requires user input for user creation!
 
 4. **Start Application**
 
