@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $sAdmin = Role::create(['name' => 'Super Admin']);
-        User::find(1)->assignRole($sAdmin);
+
+        $firstUser = User::find(1);
+        if ($firstUser)
+            User::find(1)->assignRole($sAdmin);
 
         #region Create all permissions
         Permission::create(['name' => 'manage users']);
