@@ -15,11 +15,6 @@ if [ ! -s "$DOCKER_ENV" ]; then
     chown www-data:www-data "$DOCKER_ENV" || true
 fi
 
-# Update values based on docker-compose environment variables
-sed -i "s|^#\? \?APP_NAME=.*|APP_NAME=\"${APP_NAME}\"|" "$DOCKER_ENV"
-sed -i "s|^#\? \?DB_CONNECTION=.*|DB_CONNECTION=${DB_CONNECTION}|" "$DOCKER_ENV"
-sed -i "s|^#\? \?DB_DATABASE=.*|DB_DATABASE=${DB_DATABASE}|" "$DOCKER_ENV"
-
 # Link .env file to application root
 if [ ! -L "$APP_ENV" ] && [ ! -f "$APP_ENV" ]; then
     echo "Linking .env file..."
