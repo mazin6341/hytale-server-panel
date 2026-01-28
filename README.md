@@ -92,7 +92,7 @@ NOTE: This step requires user input for user creation!
 
 **NOTE: The first user in the system will be automatically assigned Super Admin role!**
 
-    ```bash
+    ```
     docker-compose exec hytale-web-panel php artisan user:create
     ```
 
