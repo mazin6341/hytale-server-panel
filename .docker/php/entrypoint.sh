@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-chown -R www-data:www-data /var/www/database /var/www/.docker
+chown -R www-data:www-data /var/www/database /var/www/.docker /var/www/html
 
 if [ -S /var/run/docker.sock ]; then
     chown www-data:www-data /var/run/docker.sock
