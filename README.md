@@ -88,6 +88,14 @@ NOTE: This step requires user input for user creation!
     docker-compose up -d
     ```
 
+## Creating your first user
+
+**NOTE: The first user in the system will be automatically assigned Super Admin role!**
+
+    ```bash
+    docker-compose exec hytale-web-panel php artisan user:create
+    ```
+
 ## Usage
 
 Once the containers are running, you can access the application at `http://localhost:8000` (or the port defined in your Docker configuration).
