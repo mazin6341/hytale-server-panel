@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AuthController;
 use App\Models\AppSetting;
-use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,8 +11,12 @@ Route::get('/', function () {
         $port = AppSetting::where('section', 'Web Map')->where('name', 'Port')->first()->getValue();
         $fullUrl = "{$url}:{$port}";
         return view('map', ['url' => $fullUrl]);
-    } else
-        return redirect(route('login'));
+    } else {
+        if(Auth::user())
+            return redirect(route('admin.dashboard'));
+        else 
+            return redirect(route('login'));
+    }
 });
 
 Route::get('/admin', function() {
