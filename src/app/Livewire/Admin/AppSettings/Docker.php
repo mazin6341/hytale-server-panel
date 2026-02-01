@@ -12,7 +12,7 @@ class Docker extends Component
     #endregion
 
     public function mount() {
-        $this->settings = AppSetting::where('section', 'Docker Settings')->get()->map(fn($setting) => ['name' => $setting->name, 'detail' => $setting->detail, 'value' => $setting->getValue(), 'is_encrypted' => $setting->is_encrypted, 'is_boolean' => $setting->is_boolean])->toArray();
+        $this->settings = AppSetting::where('section', 'Docker Settings')->get()->map(fn($setting) => ['name' => $setting->name, 'detail' => $setting->detail, 'value' => $setting->getValue(), 'type' => $setting->type])->toArray();
     }
 
     public function render() {

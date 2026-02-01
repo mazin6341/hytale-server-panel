@@ -23,3 +23,8 @@ function paginateCollection(Collection $collection, $perPage = 15, $page = null,
         ] + $options
     );
 }
+
+function humanizeNumber($number) {
+    $formatter = new NumberFormatter('en_US', NumberFormatter::PADDING_POSITION);
+    return $formatter->format($number);
+}

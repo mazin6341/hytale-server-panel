@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="flex sm:justify-end">
-                            @if($setting['is_boolean'])
+                            @if($setting['type'] == App\Models\Enums\SettingTypes::Boolean)
                                 <x-toggle 
                                     wire:model="settings.{{$i}}.value" 
                                     lg 
@@ -50,7 +50,7 @@
                                     <x-input 
                                         wire:model="settings.{{$i}}.value"
                                         placeholder="Value for {{ $setting['name'] }}"
-                                        type="{{ $setting['is_encrypted'] ? 'password' : 'text' }}"
+                                        type="{{ $setting['type'] == App\Models\Enums\SettingTypes::Encrypted ? 'password' : 'text' }}"
                                         class="dark:bg-secondary-900 dark:border-secondary-600 dark:text-gray-300"
                                         :disabled="!\Auth::user()->can('modify web map settings')"
                                     />
